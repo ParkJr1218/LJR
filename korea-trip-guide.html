@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇰🇷 首尔·釜山 8日攻略 | 2026.6.6-6.14</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --muted: #6b6b6b;
+    --accent: #c4a882;
+    --accent2: #a8c4b8;
+    --seoul: #e8b4b8;
+    --busan: #89bdd3;
+    --bts: #c8a2da;
+    --warn: #f0c8b0;
+    --border: #e8e4df;
+    --shadow: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.06);
+  }
+  html { scroll-behavior: smooth; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 24px 16px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  /* Hero */
+  .hero {
+    text-align: center; padding: 40px 20px 32px;
+    background: linear-gradient(135deg, #f5efe6 0%, #edf3f0 50%, #f3edf6 100%);
+    border-radius: 20px; margin-bottom: 28px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+  .hero .sub { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+  .hero .dates {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+  }
+  .hero .date-chip {
+    padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;
+    color: #fff;
+  }
+  .chip-seoul { background: var(--seoul); }
+  .chip-busan { background: var(--busan); }
+  .chip-bts { background: var(--bts); }
+
+  /* Sticky Nav Container */
+  .sticky-nav-container {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+  }
+  /* Calendar Strip */
+  .calendar-strip-wrapper {
+    padding: 8px 0 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .calendar-strip {
+    display: flex; gap: 6px; overflow-x: auto;
+    padding-bottom: 8px; -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  .calendar-strip::after { content: ''; flex: 0 0 1px; }
+  .cal-day {
+    flex: 0 0 auto; min-width: 68px; text-align: center;
+    padding: 8px 6px; border-radius: 10px; background: var(--card);
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+    cursor: pointer; transition: .15s; text-decoration: none; color: var(--text);
+    display: block; font-size: inherit;
+  }
+  .cal-day:hover, .cal-day:focus { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+  .cal-day .dow { font-size: 10px; color: var(--muted); }
+  .cal-day .num { font-size: 18px; font-weight: 700; margin: 1px 0; }
+  .cal-day .city { font-size: 10px; color: var(--muted); }
+  .cal-day.seoul { border-top: 3px solid var(--seoul); }
+  .cal-day.busan { border-top: 3px solid var(--busan); }
+  .cal-day.bts { border-top: 3px solid var(--bts); }
+  .cal-day.active-day { background: #f5f0e8; border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.1); background: var(--accent); color: #fff; }
+  .cal-day.active-day .dow, .cal-day.active-day .city { color: rgba(255,255,255,.8); }
+
+  /* Day Cards */
+  .day-card {
+    background: var(--card); border-radius: 16px; box-shadow: var(--shadow);
+    border: 1px solid var(--border); margin-bottom: 20px; overflow: hidden;
+  }
+  .day-card-header {
+    padding: 16px 20px; display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer; user-select: none;
+  }
+  .day-card-header h2 { font-size: 17px; }
+  .day-label {
+    font-size: 12px; font-weight: 600; padding: 3px 10px;
+    border-radius: 12px; color: #fff;
+  }
+  .day-card-body { padding: 0 20px 20px; display: none; }
+  .day-card.open .day-card-body { display: block; }
+  .day-card.open .day-card-header { border-bottom: 1px solid var(--border); }
+
+  /* Sections */
+  .sec { margin-bottom: 16px; }
+  .sec-title {
+    font-size: 13px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .timeline { list-style: none; }
+  .timeline li {
+    padding: 8px 0 8px 20px; border-left: 2px solid var(--border);
+    margin-left: 6px; font-size: 14px; position: relative;
+  }
+  .timeline li::before {
+    content: ''; position: absolute; left: -5px; top: 14px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+  }
+  .time { font-weight: 600; color: var(--muted); font-size: 12px; margin-right: 8px; }
+
+  /* Transport */
+  .transport-box {
+    background: #f8f6f3; border-radius: 10px; padding: 12px 16px;
+    font-size: 13px; line-height: 1.6;
+  }
+  .transport-box strong { color: var(--accent); }
+  .metro { display: inline-block; padding: 2px 8px; border-radius: 4px;
+    background: #eee; font-size: 11px; font-weight: 700; margin: 0 2px; }
+
+  /* Must / Warn lists */
+  .shop-list, .food-list {
+    list-style: none; display: grid; gap: 8px;
+  }
+  .shop-list li, .food-list li {
+    padding: 10px 14px; border-radius: 10px; font-size: 13px;
+    background: #fafaf9; border: 1px solid var(--border);
+  }
+  .shop-list li .name, .food-list li .name { font-weight: 700; }
+  .shop-list li .desc, .food-list li .desc { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .tag {
+    display: inline-block; padding: 1px 6px; border-radius: 4px;
+    font-size: 10px; font-weight: 700; margin-right: 4px;
+  }
+  .tag-must { background: #e8f0e8; color: #3a7a3a; }
+  .tag-warn { background: #fdf0e8; color: #c06020; }
+  .tag-bts { background: #f3e8fa; color: #7a3ac0; }
+
+  /* Warn Box */
+  .warn-box {
+    background: #fef8f4; border: 1px solid #f0c8b0;
+    border-radius: 10px; padding: 12px 16px; font-size: 13px;
+  }
+  .warn-box strong { color: #c06020; }
+
+  /* Tightness badge */
+  .pace-badge {
+    font-size: 11px; font-weight: 700; padding: 2px 10px;
+    border-radius: 10px; margin-left: 8px;
+  }
+  .pace-easy { background: #e8f0e8; color: #3a7a3a; }
+  .pace-moderate { background: #fef3d5; color: #b08020; }
+  .pace-tight { background: #fde8e8; color: #c04040; }
+
+  /* Friend Box */
+  .friend-box {
+    background: linear-gradient(135deg, #f0f4f8, #f8f6fa);
+    border-radius: 12px; padding: 16px; border: 1px dashed #c8d4e0;
+  }
+  .friend-box h4 { font-size: 14px; margin-bottom: 8px; }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 22px; }
+    .day-card-header h2 { font-size: 15px; }
+    .calendar-strip { gap: 4px; }
+    .cal-day { min-width: 60px; padding: 8px 6px; }
+  }
+
+  /* Day Section Nav */
+  .section-nav-wrapper {
+    padding: 6px 0 8px;
+    border-bottom: 1px solid var(--border);
+    opacity: 1; transition: opacity .2s;
+    min-height: 36px;
+  }
+  .section-nav {
+    display: flex; gap: 8px; overflow-x: auto;
+    padding-bottom: 4px; -webkit-overflow-scrolling: touch;
+  }
+  .section-nav a {
+    flex: 0 0 auto; padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; text-decoration: none;
+    color: var(--muted); background: var(--card);
+    border: 1px solid var(--border); white-space: nowrap;
+    transition: .15s;
+  }
+  .section-nav a:hover, .section-nav a:focus { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .section-nav .sn-label {
+    font-size: 11px; font-weight: 700; color: var(--text); padding: 6px 4px;
+    margin-right: 2px; white-space: nowrap; display: flex; align-items: center;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .day-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .day-card-body { display: block !important; }
+    .calendar-strip { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>🇰🇷 首尔 · 釜山 8日攻略</h1>
+    <div class="sub">2026.6.6 Sat — 6.14 Sun &nbsp;|&nbsp; 逛街购物 × 海岸风景 × BTS 周年演唱会</div>
+    <div class="dates">
+      <span class="date-chip chip-seoul">🏙 首尔 6.6-6.9</span>
+      <span class="date-chip chip-busan">🌊 釜山 6.9-6.13</span>
+      <span class="date-chip chip-bts">🎵 演唱会 6.12-6.13</span>
+    </div>
+  </div>
+
+  <!-- STICKY NAV CONTAINER -->
+  <div class="sticky-nav-container">
+
+  <!-- CALENDAR STRIP -->
+  <div class="calendar-strip-wrapper">
+  <div class="calendar-strip">
+    <a href="#day1" class="cal-day seoul">
+      <div class="dow">周六</div><div class="num">6</div><div class="city">首尔</div>
+    </a>
+    <a href="#day2" class="cal-day seoul">
+      <div class="dow">周日</div><div class="num">7</div><div class="city">首尔</div>
+    </a>
+    <a href="#day3" class="cal-day seoul">
+      <div class="dow">周一</div><div class="num">8</div><div class="city">首尔</div>
+    </a>
+    <a href="#day4" class="cal-day busan">
+      <div class="dow">周二</div><div class="num">9</div><div class="city">首尔→釜山</div>
+    </a>
+    <a href="#day5" class="cal-day busan">
+      <div class="dow">周三</div><div class="num">10</div><div class="city">釜山</div>
+    </a>
+    <a href="#day6" class="cal-day busan">
+      <div class="dow">周四</div><div class="num">11</div><div class="city">釜山</div>
+    </a>
+    <a href="#day7" class="cal-day bts">
+      <div class="dow">周五</div><div class="num">12</div><div class="city">釜山 🎵</div>
+    </a>
+    <a href="#day8" class="cal-day bts">
+      <div class="dow">周六</div><div class="num">13</div><div class="city">釜山 🎵</div>
+    </a>
+    <a href="#day9" class="cal-day" style="border-top:3px solid #ccc">
+      <div class="dow">周日</div><div class="num">14</div><div class="city">仁川</div>
+    </a>
+  </div>
+  </div>
+
+  <!-- Day Section Nav -->
+  <div class="section-nav-wrapper" id="sectionNavWrapper">
+    <div class="section-nav" id="sectionNav">
+      <span class="sn-label" id="snDayLabel">Day 1</span>
+    </div>
+  </div>
+
+  </div>
+  <!-- END STICKY NAV CONTAINER -->
+
+  <!-- ==================== DAY 1 ==================== -->
+  <div class="day-card open" id="day1">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 1 · 6/6 周六 <span class="pace-badge pace-easy">轻松</span></h2>
+      <span class="day-label" style="background:var(--seoul)">首尔</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#f0f7f4; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">🛬 <strong>抵达日</strong>：仁川机场 → 合井洞住宿</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🛬 机场 → 首尔住宿路线</div>
+        <div class="transport-box">
+          <strong>推荐方案：AREX 机场快线</strong><br>
+          仁川机场 T1/T2 → 搭乘 <strong>AREX 机场快线</strong>（一般列车即可，不必坐直通车）<br>
+          → 弘大入口站（홍대입구역）下车，约50分钟，₩4,000-5,000<br>
+          → 换乘 <span class="metro">2号线</span> 1站 → 合井站（합정역）<br>
+          → 2号出口步行5分钟到住宿<br><br>
+          <strong>备选：机场大巴</strong><br>
+          仁川机场 → 6002号大巴 → 弘大入口站/合井站（约70分钟，₩10,000）<br>
+          好处是不用提着行李换乘地铁，直达弘大区域后打车₩5,000到住宿
+        </div>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">15:00</span> 入住：합정동 432-19 201호（合井站步行约5分钟）</li>
+          <li><span class="time">16:00</span> 🚇 合井站 → 乙支路入口站（2号线，约25分钟）→ 明洞</li>
+          <li><span class="time">16:30</span> 🛍 明洞逛街 + 换钱</li>
+          <li><span class="time">18:30</span> 🍗 明洞晚餐</li>
+          <li><span class="time">19:30</span> 🚡 步行至南山缆车站（约10分钟），缆车上首尔塔</li>
+          <li><span class="time">20:00</span> 🌃 南山首尔塔夜景 + 挂锁</li>
+          <li><span class="time">21:30</span> 🚇 返回合井洞</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          合井站 <span class="metro">2号线</span> → 乙支路入口站（6号出口）→ 步行5分钟到明洞主街<br>
+          明洞 → 南山缆车：步行约10分钟上坡路（跟着指示牌"남산공원"）<br>
+          <strong>T-money交通卡</strong>：便利店7-11/G25购买充值，地铁起步₩1,400
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🛍 必逛</div>
+        <ul class="shop-list">
+          <li><span class="tag tag-must">必去</span><span class="name">Olive Young 明洞旗舰店</span><div class="desc">韩国最大美妆集合店，面膜/防晒必囤，明洞店货最全</div></li>
+          <li><span class="tag tag-must">必去</span><span class="name">ALAND 明洞店</span><div class="desc">韩国设计师品牌集合店，男女装都有，价位友好</div></li>
+          <li><span class="tag tag-must">必去</span><span class="name">Alo Yoga 乐天百货明洞店</span><div class="desc">🔥 你要求的！乐天百货明洞本店（롯데백화점 본점）内有 Alo 专柜，瑜伽服/运动装必逛</div></li>
+          <li><span class="name">Stylenanda Pink Hotel</span><div class="desc">3CE母品牌，整栋粉色装修，适合拍照+买彩妆</div></li>
+          <li><span class="name">8 Seconds</span><div class="desc">韩国版"优衣库"，基础款性价比高</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">路边化妆品摊/小型美妆店</span><div class="desc">明洞路边小摊价格虚高，赠品少，直接去Olive Young即可</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃</div>
+        <ul class="food-list">
+          <li><span class="tag tag-must">必吃</span><span class="name">BHC 炸鸡 明洞店</span><div class="desc">全智贤代言！뿌링클（芝士粉炸鸡）+ 맛초킹（酱油蜂蜜）必点，₩20,000-25,000。📌 你要求的</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">명동교자 (明洞饺子)</span><div class="desc">米其林必比登推荐，칼국수（刀切面）+ 만두（饺子），₩10,000/人</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">오봉집 (Obong House)</span><div class="desc">📌 你要求的！韩式家庭料理，炖鱼/酱蟹/拌饭，多家分店，查Naver找最近的店。₩12,000-18,000/人</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">明洞主街路边摊</span><div class="desc">烤肉串/糖饼价格是弘大的1.5-2倍，只是逛看看就好</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🚡 南山缆车选站位</span><div class="desc">上山时站<strong>缆车右侧</strong>，可以看到首尔城市全景慢慢展开；下山时换左边。傍晚17:30-18:00上山最好，能同时看到日景+日落+夜景三种变化</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🔒 挂锁提前买</span><div class="desc">首尔塔的锁₩10,000一个很贵！在明洞大创（Daiso）提前买，₩1,000-2,000搞定，还能挑好看的款式</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">💱 明洞换钱</span><div class="desc">明洞换钱所汇率最好（比银行和机场好很多），推荐"大使馆换钱所"或"一品换钱所"，带人民币现金去换。换之前先对比几家门口的汇率牌</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🧾 店内退税</span><div class="desc">明洞很多店铺消费满₩30,000可直接店内退税（需出示护照），不要等机场再排长队退。记得<strong>带护照出门</strong></div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">📱 Olive Young 省钱</span><div class="desc">结账前下载 Olive Young APP，新会员通常有 10-15% 折扣券，比现场直接买便宜很多</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 2 ==================== -->
+  <div class="day-card" id="day2">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 2 · 6/7 周日 <span class="pace-badge pace-moderate">适中</span></h2>
+      <span class="day-label" style="background:var(--seoul)">首尔</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">08:30</span> ⚠️ <strong>早出发！</strong>周日人多，8:30出发，9点景福宫开门就到！</li>
+          <li><span class="time">09:30</span> 🏯 景福宫（穿韩服免门票，光化门10点有守门将换岗仪式）</li>
+          <li><span class="time">11:30</span> 🚶 步行至北村韩屋村（约15分钟）</li>
+          <li><span class="time">12:30</span> 🍜 三清洞午餐（就在韩屋村旁边）</li>
+          <li><span class="time">14:00</span> ☕ 三清洞咖啡厅 + 逛小店</li>
+          <li><span class="time">16:00</span> 🚶 步行至仁寺洞（约15分钟）</li>
+          <li><span class="time">18:00</span> 🚇 安国站 → 合井站返回</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          合井站 <span class="metro">2号线</span> → 乙支路3街站换乘 <span class="metro">3号线</span> → 景福宫站（4号出口）<br>
+          <strong>全程步行区域：景福宫 → 北村 → 三清洞 → 仁寺洞（步行范围2km内）</strong><br>
+          返程：安国站 <span class="metro">3号线</span> 返回
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🛍 必逛</div>
+        <ul class="shop-list">
+          <li><span class="tag tag-must">必去</span><span class="name">韩服体验馆（景福宫周边）</span><div class="desc">穿韩服进景福宫免门票₩3,000，租金约₩15,000-25,000/2h</div></li>
+          <li><span class="name">三清洞独立小店</span><div class="desc">手作香薰、设计师饰品、小众文具，比明洞更有质感</div></li>
+          <li><span class="name">쌈지길 (Ssamziegil) 仁寺洞</span><div class="desc">螺旋式文创商场，一层层逛上去，韩纸/陶瓷/手工艺品</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">仁寺洞主街大型商铺</span><div class="desc">仁寺洞主街大型纪念品店价格偏高，逛쌈지길就够了</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃</div>
+        <ul class="food-list">
+          <li><span class="tag tag-must">必吃</span><span class="name">土俗村参鸡汤 (토속촌)</span><div class="desc">景福宫步行5分钟，首尔最出名参鸡汤，排队约20-30分钟，₩19,000</div></li>
+          <li><span class="name">三清洞面片汤 (삼청동 수제비)</span><div class="desc">米其林推荐，手工面片汤+土豆煎饼，₩10,000/人</div></li>
+          <li><span class="name">Onion Cafe 安国店</span><div class="desc">韩屋改造咖啡厅，面包+咖啡，环境超适合拍照</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">👘 韩服选浅色系</span><div class="desc">景福宫背景是深色木质建筑+灰墙，浅色/亮色韩服拍照最好看（粉色、浅蓝、白色），深色韩服容易和背景融为一体。裙撑（속치마）一定要穿，裙子蓬起来才有韩服那种飘逸感</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🕙 守门将换岗别错过</span><div class="desc">光化门每天 10:00 / 14:00 两场守门将换岗仪式（约20分钟），<strong>周一停演</strong>！但6/8是周一的话……等等你们Day2是周日6/7，正好能看！站在光化门正前方广场中间位置视野最佳</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">📸 北村韩屋拍照点</span><div class="desc">最佳机位在北村5街和6街的交界处（북촌로5길），可以拍到层层韩屋+远处景福宫的屋顶。<strong>注意：</strong>北村是真实居民区，拍照时保持安静，很多墙上贴着"请勿喧哗"</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">☕ 三清洞咖啡二楼坐</span><div class="desc">三清洞很多咖啡厅有二楼/露台，可以看到韩屋屋顶+北岳山，比坐一楼体验好太多。Onion Cafe 建议坐后院韩屋区而不是主厅</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🛍 仁寺洞쌈지길 从顶往下逛</span><div class="desc">쌈지길是螺旋式建筑，<strong>坐电梯到顶层再一层层走下来</strong>，不用爬楼梯！每层都有不同主题的文创店，顶层可以拍到中庭全景</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 3 ==================== -->
+  <div class="day-card" id="day3">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 3 · 6/8 周一 <span class="pace-badge pace-moderate">适中</span></h2>
+      <span class="day-label" style="background:var(--seoul)">首尔</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#fef8f4; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">⚠️ <strong>请注意：</strong>梨大和汝矣岛方向相反，已精简为<strong>弘大 + 延南洞为主</strong>，梨大和汝矣岛根据体力选去</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">10:00</span> 🚶 步行至弘大商圈（从合井洞住址步行5-10分钟）</li>
+          <li><span class="time">10:30</span> 🛍 弘大逛街（AK Plaza, Wonder Place, Nerdy, Object 等）</li>
+          <li><span class="time">13:00</span> 🍜 延南洞午餐</li>
+          <li><span class="time">14:30</span> ☕ 延南洞咖啡 + 逛小店（延南洞和弘大无缝衔接）</li>
+          <li><span class="time">17:00</span> 选项A：继续弘大逛街至晚上 | 选项B：梨大（2号线1站）| 选项C：汝矣岛汉江公园（2号线直达）</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          <strong>本日以步行为主！</strong>住址就在弘大/延南洞旁边<br>
+          弘大 → 梨大：<span class="metro">2号线</span> 弘大入口站→梨大站（1站，2分钟）<br>
+          弘大 → 汝矣岛汉江公园：<span class="metro">2号线</span> 弘大入口站→堂山站换乘<span class="metro">9号线</span>→汝矣岛站
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🛍 必逛（弘大区域）</div>
+        <ul class="shop-list">
+          <li><span class="tag tag-must">必去</span><span class="name">Object (오브젝트)</span><div class="desc">韩国文青最爱的文创店，贴纸/文具/生活杂货，送人首选</div></li>
+          <li><span class="tag tag-must">必去</span><span class="name">EMIS 弘大旗舰店 (에미스)</span><div class="desc">🔥 超火韩国潮牌！棒球帽/运动服/包包，明星同款。弘大店货最全，地址：마포구 와우산로 64，和 Wonder Place 步行3分钟</div></li>
+          <li><span class="tag tag-must">必去</span><span class="name">Wonder Place 弘大店</span><div class="desc">韩国潮牌集合店，thisisneverthat / Covernat / LMC 等</div></li>
+          <li><span class="name">Nerdy 弘大旗舰店</span><div class="desc">运动套装天堂，三层独栋，可试穿拍照</div></li>
+          <li><span class="tag tag-must">必去</span><span class="name">Musinsa Standard 弘大旗舰店 (무신사 스탠다드)</span><div class="desc">🔥 韩国最大时尚平台线下店！独栋三层，基础款+潮牌都有，性价比超高。弘大主街最显眼位置，EMIS 步行2分钟就到</div></li>
+          <li><span class="name">AK Plaza 弘大</span><div class="desc">地铁站直通的综合商场，Kakao Friends / Wonder Place 都有，顺便逛</div></li>
+          <li><span class="name">延南洞小店</span><div class="desc">沿着경의선숲길（京义线林道）散步，两侧全是宝藏小店+咖啡馆</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃</div>
+        <ul class="food-list">
+          <li><span class="tag tag-must">必吃</span><span class="name">土豆脊骨汤 (감자탕)</span><div class="desc">弘大"이대조뼈감자탕"（二代祖土豆脊骨汤）最出名，24小时营业，₩12,000/人</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">할머니기름집 (Grandma Oil House) 弘大店</span><div class="desc">📌 你要求的！弘大/江南都有分店，烤猪肉+油香小菜出名，五花肉外酥里嫩。₩15,000-20,000/人</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">유가네 닭갈비 (柳氏家铁板鸡) 弘大店</span><div class="desc">📌 你要求的！连锁铁板鸡专门店，芝士铁板鸡是招牌，弘大商圈有多家分店。₩12,000-15,000/人</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">세광양대창 (Segwang 羊肥肠) 弘大店</span><div class="desc">📌 你要求的！烤羊/牛肥肠专门店，外焦里嫩，配烧酒一绝。弘大附近有分店。₩15,000-20,000/人</div></li>
+          <li><span class="name">Thanks, Oat 延南洞</span><div class="desc">超人气燕麦拿铁+可露丽，排队较长但值得</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🛍 弘大主街 vs 后街</span><div class="desc">弘大主街（홍익로）是品牌大店+连锁，<strong>后街（와우산로 后面小巷）才是宝藏区</strong>：独立设计师店、古着店、小众文具店都在巷子里。EMIS 和 Nerdy 在主街附近，逛完去后街挖宝</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🧢 EMIS 试帽技巧</span><div class="desc">EMIS 帽子很火但帽型偏小，<strong>一定要试戴</strong>！热门款（刺绣logo棒球帽）上午去货全，下午很多款式会断码。试戴时小心不要弄脏展示品</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🎸 周末弘大街头表演</span><div class="desc">弘大主街傍晚有 K-pop 舞蹈 cover / 独立乐队 / 街头魔术表演。但6/8是周一，表演比周末少，想看的可以前一天（周日）傍晚先来溜达一圈</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">☕ 延南洞林道分叉口</span><div class="desc">京义线林道（경의선숲길）中间有个分叉口，<strong>走左侧小路</strong>才是延南洞精华区（独立咖啡馆+手作店集中），右侧大路通向住宅区没什么可逛的</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🌸 梨大要不要去？</span><div class="desc">梨大本校园区很漂亮（欧式建筑+下沉图书馆），但周边商圈近年没落了，很多店关门。如果对校园拍照感兴趣就去（2号线1站），纯逛街的话弘大完全够</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 4 ==================== -->
+  <div class="day-card" id="day4">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 4 · 6/9 周二 <span class="pace-badge pace-tight">偏紧</span></h2>
+      <span class="day-label" style="background:var(--busan)">首尔→釜山</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#fef8f4; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">⚠️ <strong>关键日！</strong>12点需要抢演唱会门票，所有安排以此为中心。退房后行李是核心问题。</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">10:00</span> 起床收拾行李</li>
+          <li><span class="time">10:40</span> 🏨 退房，行李寄存方案见下方</li>
+          <li><span class="time">11:15</span> 🚇 前往首尔站（合井站→首尔站，2号线→1号线，约20分钟）</li>
+          <li><span class="time">11:45</span> 💻 首尔站内找咖啡厅/休息区坐定，打开抢票页面</li>
+          <li><span class="time">12:00</span> ⚡ 开抢！祝好运 🍀</li>
+          <li><span class="time">12:30</span> 🍜 首尔站内午餐</li>
+          <li><span class="time">13:30</span> 🚄 KTX 首尔站 → 釜山站（约2小时45分）</li>
+          <li><span class="time">16:00</span> 🏨 入住广安里 KCC 하버뷰</li>
+          <li><span class="time">18:00</span> 🌅 广安里海滩散步 + 广安大桥日落</li>
+          <li><span class="time">19:30</span> ☕ ⭐ <strong>智旻爸爸咖啡店 MAGNATE</strong>（步行距离！）</li>
+          <li><span class="time">21:00</span> 🍗 广安里附近晚餐</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🧳 行李寄存方案</div>
+        <div class="transport-box">
+          <strong>推荐方案：首尔站行李寄存</strong><br>
+          · 首尔站地下一层有大量投币式储物柜（Locker），₩3,000-5,000/天<br>
+          · 站内也有 <strong>짐캐리 (Zimcarry)</strong> 人工寄存点，可放大行李箱<br>
+          · KTX票可提前在 Korail 官网/app 购买，首尔→釜山约 ₩59,800/人<br><br>
+          <strong>备选方案：</strong><br>
+          · 如果抢到首尔站附近的票更好，直接在站内搞定一切<br>
+          · 永登浦站也可坐 KTX 到釜山，但首尔站车次更多
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          合井站 <span class="metro">2号线</span> → 市厅站换乘 <span class="metro">1号线</span> → 首尔站<br>
+          KTX 首尔站 → 釜山站（约2h45m）<br>
+          釜山站 → 广安里：<span class="metro">1号线</span> 釜山站→西面站换乘<span class="metro">2号线</span>→广安站（3号出口步行至海滩）
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃（广安里附近）</div>
+        <ul class="food-list">
+          <li><span class="tag tag-bts">ARMY</span><span class="name">⭐ MAGNATE (마그네이트)</span><div class="desc">智旻爸爸开的咖啡店！地址：부산 수영구 광안동 203-10，就在广安里海边步行范围内。必点智旻推荐的饮品，店内有BTS签名周边展示</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">Baro Haejang (바로해장) 广安里店</span><div class="desc">📌 你要求的！就在广安里海滩旁边！必点清炖牛肋条（软嫩弹牙+特质蘸料绝了）！另外推荐牛肉汤饭配乌冬。₩15,000-20,000/人</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">辣炖排骨 (매운갈비찜) 广安里附近</span><div class="desc">📌 你要求的！距广安里约1公里，吃完可步行到海边。Catchtable APP 可提前线上拿号。你说"如果只吃一顿一定要吃这家"！₩18,000-25,000/人</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🎫 抢票前准备清单</span><div class="desc">提前注册好 Interpark 账号 + 填好个人信息（姓名/生日/护照号）+ 绑定支付方式。开抢前5分钟打开页面疯狂刷新。建议<strong>两人同时抢不同区域</strong>，谁先成功就用谁的</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🧳 首尔站储物柜选 B1</span><div class="desc">首尔站有好几层储物柜，<strong>B1层（KTX候车层）的最大</strong>，28寸箱子放得下。如果满了去3楼的 짐캐리 人工寄存（贵一点但肯定有位）。先去找柜子再喝咖啡！</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🚄 KTX 坐左侧靠窗</span><div class="desc">首尔→釜山方向，坐<strong>列车前进方向的左侧靠窗</strong>，途经大田-大邱段可以看到山脉风景；右侧大部分是隧道和隔音墙。买票时选"창측"（靠窗）</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">☕ MAGNATE 点什么</span><div class="desc">智旻爸爸常推荐的饮品是 Americano 和 Lemon Ade。店内有很多 BTS 签名专辑/照片/手写信展示，<strong>拍照可以但不能用闪光灯</strong>。店里有卖周边杯子，限量款早去早得</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🌉 广安大桥亮灯时间</span><div class="desc">广安大桥夜景是釜山最美夜景之一，<strong>日落后约 19:45-20:00 亮灯</strong>（6月），持续到23:00。从广安里沙滩正中位置拍照最佳，海水退潮时有镜面效果</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 5 ==================== -->
+  <div class="day-card" id="day5">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 5 · 6/10 周三 <span class="pace-badge pace-moderate">适中</span></h2>
+      <span class="day-label" style="background:var(--busan)">釜山</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#f0f7f4; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">🚂 <strong>今日走东海岸线</strong>，胶囊列车已预约！海东龙宫寺建议8点前出发，上午人少。</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">08:00</span> 🚌 出发前往海东龙宫寺（早点去避开人群）</li>
+          <li><span class="time">09:00</span> 🛕 海东龙宫寺（韩国唯一海边寺庙，1-1.5h）</li>
+          <li><span class="time">10:30</span> 🚌 返回海云台方向</li>
+          <li><span class="time">11:00</span> 🚂 海边列车 Haeundae Beach Train（Mipo → Cheongsapo，约30分钟）</li>
+          <li><span class="time">12:00</span> 🚡 胶囊列车 Sky Capsule（Cheongsapo → Mipo 回程，约30分钟）🎫 已预约！</li>
+          <li><span class="time">13:00</span> 🍜 海云台午餐</li>
+          <li><span class="time">14:30</span> 🏖 海云台海滩散步 + 咖啡</li>
+          <li><span class="time">17:00</span> 🚇 返回广安里</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          广安站 <span class="metro">2号线</span> → 海云台站（3/5号出口）→ 换乘해운대구9巴士至海东龙宫寺<br>
+          <strong>海边列车 & 胶囊列车：</strong><br>
+          · 海边列车（Beach Train）：Mipo站出发，沿海岸线运行，₩12,000<br>
+          · 胶囊列车（Sky Capsule）：🎫 已预约 6/10！Mipo→Cheongsapo坐火车（看海），回程坐胶囊（高空view更好）<br>
+          返程：海云台站 <span class="metro">2号线</span> → 广安站
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃</div>
+        <ul class="food-list">
+          <li><span class="tag tag-must">必吃</span><span class="name">해운대 밀면 (海云台小麦面)</span><div class="desc">海云台밀면집有几家老字号，가야밀면和해운대원조밀면最有名，₩8,000</div></li>
+          <li><span class="name">Cheongsapo 烤海鲜</span><div class="desc">青沙浦站下车后海边一排海鲜棚，조개구이（烤贝类）现捞现烤</div></li>
+          <li><span class="name">海云台传统市场</span><div class="desc">市场内各种小吃，推荐어묵（鱼糕）和회덮밥（生鱼片盖饭）</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🛕 海东龙宫寺 越早越好</span><div class="desc">这是韩国唯一的海边寺庙，<strong>8:30前到达</strong>最好。10点以后旅行团涌入，108级台阶入口处排队拍照都要等很久。寺庙入口有个"得男佛"（득남불），传说摸鼻子能得好运</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🚂 海边列车坐右侧</span><div class="desc">Mipo→Cheongsapo方向，<strong>坐列车右侧靠窗</strong>，全程贴着海岸线走，大海就在窗外！左侧是山体没什么看的。提前10分钟到Mipo站排队，抢右侧靠窗位</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🚡 胶囊列车拍照时机</span><div class="desc">胶囊列车全程约30分钟，<strong>前10分钟和最后5分钟</strong>视野最开阔（高空俯瞰海岸线）！中间段有树木遮挡。列车很慢（约5km/h），可以慢慢拍。两种颜色胶囊：红/黄是普通，蓝/绿拍照更上镜</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🎫 海边列车 & 胶囊组合票</span><div class="desc">如果两趟都坐，买<strong>套餐票比单买便宜</strong>（约₩45,000/人 vs 分开买₩12,000+₩40,000）。但胶囊列车已在 bluelinepark.com 预约了时间，海边列车不用预约</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🏖 海云台沙滩躺一下</span><div class="desc">海云台沙滩沙子很细，<strong>下午14:00-16:00人最少</strong>。可以租沙滩垫（돗자리）₩3,000左右。6月水温还不算暖，踩水可以，游泳偏凉。沙滩东侧（靠冬柏岛方向）比西侧安静</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 6 ==================== -->
+  <div class="day-card" id="day6">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 6 · 6/11 周四 <span class="pace-badge pace-tight">偏紧</span></h2>
+      <span class="day-label" style="background:var(--busan)">釜山</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#f0f7f4; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">💡 <strong>今日走西釜山线</strong>，景点分散。甘川建议早上9点之前到，避开人群+旅行团。</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">08:30</span> 🚌 广安站 → 甘川文化村（公交约40分钟）</li>
+          <li><span class="time">09:10</span> 🎨 甘川文化村（拍照+小王子打卡，2-2.5h）</li>
+          <li><span class="time">11:30</span> 🚕 打车至松岛（约20分钟，₩8,000-10,000）</li>
+          <li><span class="time">12:00</span> 🚡 松岛海上缆车 + 白沙滩</li>
+          <li><span class="time">13:30</span> 🚕 打车至札嘎其市场（约15分钟）</li>
+          <li><span class="time">14:00</span> 🦞 札嘎其市场午餐（海鲜市场二楼食堂比一楼便宜）</li>
+          <li><span class="time">15:30</span> 🚶 步行至南浦洞（紧挨札嘎其）</li>
+          <li><span class="time">18:00</span> 🚇 南浦站→广安站返回</li>
+          <li><span class="time">20:00</span> ♨️ SPA（可选广安里附近或 Centum City Spa Land）</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          去程：广安站 <span class="metro">2号线</span> → 西面站换乘<span class="metro">1号线</span> → 土城站（토성），换乘사하1-1/서구2巴士上山<br>
+          甘川→松岛：建议<strong>打车</strong>，距离近但公交绕路<br>
+          松岛→札嘎其：<strong>打车</strong>约₩7,000，10-15分钟<br>
+          返程：南浦站 <span class="metro">1号线</span> → 西面换乘 <span class="metro">2号线</span> → 广安站
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🛍 必逛</div>
+        <ul class="shop-list">
+          <li><span class="tag tag-must">必去</span><span class="name">甘川文化村 小王子打卡点</span><div class="desc">需排队拍照（约10-20分钟），早去人少。村内有很多手作小店</div></li>
+          <li><span class="name">南浦洞 BIFF广场</span><div class="desc">釜山版明洞，Korea Nike / ABC Mart / 各大美妆品牌</div></li>
+          <li><span class="name">南浦洞 국제시장 (国际市场)</span><div class="desc">传统市场，韩国电影《国际市场》拍摄地，杂货/布料/小吃</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">札嘎其市场一楼海鲜</span><div class="desc">一楼买海鲜再去二楼加工更划算，一楼直接点餐偏贵</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃</div>
+        <ul class="food-list">
+          <li><span class="tag tag-must">必吃</span><span class="name">札嘎其市场 회 (生鱼片)</span><div class="desc">二楼食堂比一楼便宜，광어（比目鱼）+ 우럭（石斑鱼）两种最推荐</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">南浦洞 씨앗호떡 (瓜子糖饼)</span><div class="desc">釜山名物！BIFF广场的小摊最正宗，炸糖饼里面塞满瓜子仁，₩2,000</div></li>
+          <li><span class="name">부평깡통시장 (富平罐头市场)</span><div class="desc">南浦洞附近夜市，各种韩式小吃摊位，晚上更热闹</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🎨 甘川文化村买地图印章</span><div class="desc">村口游客中心买一份<strong>印章地图（도장지도）</strong>₩2,000，在村内各打卡点集齐印章，最后一站可以换一张明信片。集印章的过程本身就像寻宝，比单纯拍照好玩多了</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🦊 小王子拍照别排错队</span><div class="desc">小王子雕像有两个拍照点：一个在观景台（排队最长，30-40分钟），另一个在往下走50米的转角（角度差不多但几乎没人排队）。<strong>直接去第二个！</strong></div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🚡 松岛缆车选水晶车厢</span><div class="desc">松岛缆车分普通车厢（₩15,000）和水晶车厢（₩20,000）。<strong>水晶车厢底部透明</strong>，可以看到脚下的海！差₩5,000体验感差很多。单程约15分钟，拍照主要在中间段</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🦞 札嘎其二楼食堂怎么点</span><div class="desc">先在<strong>一楼选海鲜</strong>（可以砍价，砍个10-20%正常），让阿姨帮你送到二楼指定餐厅加工。加工费按人收约₩5,000/人。会韩语的话点"모듬회（什锦生鱼片）"最划算，比单点多种便宜</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🚇 南浦洞地下商街</span><div class="desc">南浦洞和札嘎其之间的<strong>地下商街</strong>容易被忽略，但其实超好逛！美妆/袜子/饰品/衣服都比地面上便宜，尤其是韩国袜子（양말）₩1,000一双，当伴手礼很好</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 7 ==================== -->
+  <div class="day-card" id="day7">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 7 · 6/12 周五 <span class="pace-badge pace-easy">轻松</span></h2>
+      <span class="day-label" style="background:var(--bts)">🎵 演唱会 D-1</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#f8f0fa; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">💜 <strong>FESTA 周年演唱会第一天！</strong>下午去场馆买场周，晚上看演出。住址就在广安里海滩旁，上午可以悠闲享受。</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线（看演唱会的人）</div>
+        <ul class="timeline">
+          <li><span class="time">09:00</span> 🌅 广安里海滩散步 + 广安大桥拍照（就在楼下）</li>
+          <li><span class="time">11:00</span> 🍜 广安里早午餐</li>
+          <li><span class="time">13:00</span> 🚇 广安站 → 综合运动场站（2号线直达，约15分钟）</li>
+          <li><span class="time">15:00</span> 🛍 场馆周边排队买场周（建议更早到，场周排队时间长）</li>
+          <li><span class="time">18:00</span> 🎵 入场，演唱会开始！💜</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🧑‍🤝‍🧑 不看演唱会·朋友自由行方案</div>
+        <div class="friend-box">
+          <h4>方案 A：西面逛街 + 田浦咖啡街 + 83 Haechi 烤肉</h4>
+          <p style="font-size:13px; color:var(--muted);">广安站 <span class="metro">2号线</span> → 西面站，地下商街超长（서면지하상가），品牌多价格低。附近的전포카페거리（田浦咖啡街）是釜山最潮的咖啡街区。<br><br>🍖 <strong>83 Haechi (83해치)</strong>：📌 你要求的！烤肉+小菜都超好吃，地址：부산 부산진구 서전로 11-1，就在西面附近，朋友中午可以去吃！</p>
+          <br>
+          <h4>方案 B：新世界百货 + Spa Land</h4>
+          <p style="font-size:13px; color:var(--muted);">广安站 → Centum City站（2号线），신세계 센텀시티是世界最大百货（吉尼斯记录）。里面的Spa Land（스파랜드）是釜山最好的汗蒸幕，₩20,000/4h，有黄土房/盐房/户外足浴池。</p>
+          <br>
+          <h4>方案 C：影岛 + 白浅滩文化村</h4>
+          <p style="font-size:13px; color:var(--muted);">稍远但值得。白浅滩文化村（흰여울문화마을）是釜山新晋打卡地，海边悬崖上的小村庄，类似甘川但更安静，适合拍照。</p>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          去场馆：广安站 <span class="metro">2号线</span> → 综合运动场站（종합운동장역），约15分钟直达，无需换乘！<br>
+          演唱会结束后原路返回，地铁可能很挤，建议提前一站下车步行回。
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 必吃（场馆/广安里）</div>
+        <ul class="food-list">
+          <li><span class="tag tag-must">必吃</span><span class="name">All Sunday Bagel (올썬데이베이글)</span><div class="desc">📌 你要求的！墨鱼乳酪贝果好吃到爆！地址：부산 수영구 광안로61번길 28 1층，广安里步行可达。演唱会日上午来一个再出发！</div></li>
+          <li><span class="tag tag-must">必吃</span><span class="name">广安里 밀탑 (Miltop)</span><div class="desc">广安里海边最有名的밀면店，面对广安大桥吃面，₩8,000</div></li>
+          <li><span class="name">스파랜드 식당 (Spa Land餐厅)</span><div class="desc">如果朋友去Spa Land，里面有韩食餐厅，推荐식혜（甜米露）+烤鸡蛋</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🛍 场周排队要更早</span><div class="desc">计划15:00到但<strong>建议13:00就到场馆</strong>。BTS周年演唱会场周排队非常恐怖，热门单品（ARMY棒/限量T恤/写真）中午就有人排，下午去可能只剩冷门款。带好防晒+水+充电宝</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">💳 场周支付方式</span><div class="desc">场周通常支持现金+卡，但<strong>现金通道排队更快</strong>（因为刷卡机慢）。提前取好现金（₩100,000-200,000 预算），分几个窗口同时排不同品类</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🎒 场内禁止事项</span><div class="desc">大型相机/自拍杆/食物/饮品通常不能带入场。小包可以，大背包需要寄存。<strong>官方应援棒一定要带</strong>（记得提前装电池+检查是否配对好），现场买电池很贵</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🧑‍🤝‍🧑 朋友去 Spa Land 流程</span><div class="desc">进门先脱鞋存鞋柜→领汗蒸服→冲澡→进汗蒸房。Spa Land 一共4小时时限，建议先蒸1小时→吃饭→再蒸1小时→冲澡出来。里面的甜米露（식혜）和烤鸡蛋（구운계란）是传统搭配必点</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🚇 演唱会散场别挤地铁</span><div class="desc">散场后地铁综合运动场站人会爆满，排队进站可能20-30分钟。<strong>往广安方向可以步行1站到문현역上车</strong>，人会少很多。或者在场馆附近便利店等30分钟再走</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 8 ==================== -->
+  <div class="day-card" id="day8">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 8 · 6/13 周六 <span class="pace-badge pace-tight">紧张</span></h2>
+      <span class="day-label" style="background:var(--bts)">🎵 演唱会 D-2 + 离境</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec" style="background:#f8f0fa; border-radius:10px; padding:12px 16px;">
+        <p style="font-size:13px; margin:0;">💜 <strong>演唱会第二天！Soundcheck + 主演出。</strong>需要退房+行李处理+赶场馆+凌晨去机场，是全程最忙的一天。</p>
+      </div>
+      <br>
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线（看演唱会的人）</div>
+        <ul class="timeline">
+          <li><span class="time">09:00</span> 起床收拾行李</li>
+          <li><span class="time">10:30</span> 🏨 退房，行李全部带出</li>
+          <li><span class="time">11:00</span> 🚇 广安站 → 综合运动场站（行李带至场馆）</li>
+          <li><span class="time">12:00</span> 🧳 场馆大巴行李寄存（演唱会通常有 공식 짐보관 官方寄存服务）</li>
+          <li><span class="time">13:00</span> 🍜 场馆附近简单午餐</li>
+          <li><span class="time">14:00</span> 🎤 Soundcheck！（需提前确认 Soundcheck 入场时间）</li>
+          <li><span class="time">17:00</span> 🎵 正式演唱会</li>
+          <li><span class="time">22:00</span> 🚌 演唱会结束 → 乘坐官方大巴/预订大巴前往仁川机场</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🧑‍🤝‍🧑 朋友 6/13 自由行方案</div>
+        <div class="friend-box">
+          <h4>推荐行程：Centum City 一站式</h4>
+          <p style="font-size:13px; color:var(--muted);">
+            🛍 <strong>新世界百货 Centum City</strong>（世界最大百货，半天逛不完）<br>
+            ♨️ <strong>Spa Land</strong>（楼内直通，汗蒸幕放松半天）<br>
+            🎬 <strong>釜山电影殿堂</strong>（Busan Cinema Center，建筑本身很有设计感，可拍照）<br>
+            ☕ <strong>Centum City 内咖啡馆</strong>（百货内有很多精选咖啡厅）
+          </p>
+          <p style="font-size:12px; color:var(--muted); margin-top:8px;">交通：广安站 <span class="metro">2号线</span> → Centum City站（3站，5分钟），商场和体育馆在同一方向，朋友逛完后可以自行前往机场或与你会合。</p>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🚇 交通</div>
+        <div class="transport-box">
+          去场馆：广安站 <span class="metro">2号线</span> → 综合运动场站<br>
+          <strong>场馆 → 仁川机场：</strong><br>
+          · 演唱会官方通常提供有偿大巴（需提前购票），约5-6小时<br>
+          · 或 KTX 釜山站→首尔站→机场铁路至仁川机场（约4.5h）<br>
+          · 提前确认官方大巴购票渠道！建议演出前一周关注公告
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">⚠️ 注意事项</div>
+        <ul class="food-list">
+          <li style="border-left:3px solid #c04040;"><span class="name">行李寄存必确认</span><div class="desc">场馆官方寄存服务有限，建议提前在演唱会 notice 里确认是否有 짐보관소。如果没有，可以在 부산종합운동장역 地铁站找储物柜</div></li>
+          <li style="border-left:3px solid #c04040;"><span class="name">Soundcheck 时间</span><div class="desc">官方通常提前1-2天公告具体时间，14:00是估算，请以官方 notice 为准</div></li>
+          <li style="border-left:3px solid #c04040;"><span class="name">轻装上阵</span><div class="desc">当天要退房+看演唱会+赶夜车，能少带就少带，大箱子直接寄存</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🎤 Soundcheck 注意事项</span><div class="desc">Soundcheck 通常不允许手机拍摄（staff会巡查），<strong>专心享受就好</strong>。Soundcheck 约30-45分钟，曲目通常是3-5首非主打歌。位置就是你的正式座位，可以提前熟悉一下视角</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🧳 行李寄存在大巴上</span><div class="desc">演唱会官方大巴通常允许把行李放在<strong>行李舱</strong>（不是带上座位）。到达场馆后先去找大巴停车区确认寄存规则+拿行李牌，不要等到散场才找，那时候人潮汹涌找不到司机</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🍙 提前买好干粮</span><div class="desc">场馆附近餐厅在演唱会日爆满，<strong>提前一天在便利店买好紫菜包饭/三角饭团/能量棒</strong>。尤其是Soundcheck到正式演出之间有好几个小时，场馆内食物价格翻倍</div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">🚌 夜大巴备选方案</span><div class="desc">如果官方大巴没买到票：① KTX 釜山→首尔站→机场快线 AREX（末班KTX约22:30，赶不上演唱会结束）② 提前预订私人包车/拼车（₩150,000-200,000/车）。<strong>官方大巴是最佳选择，一定要提前确认购票</strong></div></li>
+          <li style="border-left: 3px solid var(--bts);"><span class="name">✨ 演唱会小物清单</span><div class="desc">① 应援棒+备用电池 ② 折叠坐垫（站着看几小时脚会痛）③ 便携风扇（6月场馆闷热）④ 润喉糖 ⑤ 纸巾（会哭的话😂）⑥ 充电宝+短线 ⑦ 透明雨衣（6月釜山偶有阵雨，雨伞不让带进场）</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DAY 9 ==================== -->
+  <div class="day-card" id="day9">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>Day 9 · 6/14 周日 <span class="pace-badge pace-easy">轻松</span></h2>
+      <span class="day-label" style="background:#ccc">仁川</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec">
+        <div class="sec-title">🕐 时间线</div>
+        <ul class="timeline">
+          <li><span class="time">06:00</span> 🛬 机场 SPA 醒来</li>
+          <li><span class="time">07:00</span> 🛍 逛机场免税店（乐天/新罗/新世界三大免税店）</li>
+          <li><span class="time">--</span> ✈️ 航班时间待定，按要求值机</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🛍 机场免税购物</div>
+        <ul class="shop-list">
+          <li><span class="tag tag-must">必去</span><span class="name">乐天免税店 / 新罗免税店</span><div class="desc">提前在APP下单机场提货更便宜（会员折扣+积分）！现场逛直接买也可以</div></li>
+          <li><span class="name">Olive Young 仁川机场店</span><div class="desc">临行前最后的补货机会，但价格可能比市内贵一点</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">机场餐厅</span><div class="desc">价格高口感一般，建议在机场便利店买饭团/紫菜包饭更实惠</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 小贴士</div>
+        <ul class="food-list">
+          <li style="border-left: 3px solid var(--accent);"><span class="name">📱 APP 下单 vs 现场买</span><div class="desc">乐天/新罗免税店 APP 提前下单<strong>比现场便宜 10-20%</strong>（积分+折扣券），但需在航班起飞前至少3小时下单。APP 下单后在登机口附近提货，不用拎着逛机场</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🧴 免税品液体限制</span><div class="desc">如果在市内买了液体超过100ml（化妆水/乳液等），已经免税包装封好的可以直接带上飞机（袋子不要拆！）。离开韩国前不要拆封免税密封袋</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">🛌 SPA on Air 过夜须知</span><div class="desc">凌晨到达的话很可能没位了，<strong>备选睡觉点</strong>：T1 4楼休息区有免费躺椅（先到先得）、B1 的 찜질방（汗蒸房₩15,000 可以睡地板）。带一条薄围巾当毯子，机场空调很冷</div></li>
+          <li style="border-left: 3px solid var(--accent);"><span class="name">💊 退税最后一站</span><div class="desc">在市内没退的税可以在机场退：过安检前在自助退税机扫描护照+小票（3分钟搞定），现金退税在安检后领取。₩75,000以下的单笔消费直接在 kiosk 退，超出的需海关确认</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🛌 机场 SPA 过夜</div>
+        <div class="transport-box">
+          <strong>仁川机场 SPA on Air</strong>（T1 航站楼 B1）<br>
+          · ₩20,000-25,000/晚，有淋浴+休息区+按摩椅<br>
+          · 无法提前预约，先到先得，建议到达后直接去<br>
+          · 如果满了，机场内有很多休息区+按摩椅可以凑合一晚
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== APPENDIX ==================== -->
+  <div class="day-card" id="appendix" style="border:2px solid var(--accent);">
+    <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')" style="background:#fdfaf5;">
+      <h2>📌 附录：实用信息汇总</h2>
+      <span style="font-size:18px;">📋</span>
+    </div>
+    <div class="day-card-body">
+
+      <div class="sec">
+        <div class="sec-title">🏠 住宿信息</div>
+        <div class="transport-box">
+          <strong>首尔</strong>：합정동 432-19 201호, Seoul 04022<br>
+          入住 15:00 / 退房 11:00 &nbsp;|&nbsp; 合井站(합정역) 2号线 · 6号线<br><br>
+          <strong>釜山</strong>：민락수변로 49 KCC 하버뷰 102동 1206호, Busan 48283<br>
+          入住 16:00 / 退房 11:00 &nbsp;|&nbsp; 广安站(광안역) 2号线 &nbsp;|&nbsp; 面朝广安里海滩
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💳 实用 APP & 支付</div>
+        <ul class="food-list">
+          <li><span class="name">Naver Map / Kakao Map</span><div class="desc">Google Maps在韩国基本失灵，一定要用这两个！有中文版</div></li>
+          <li><span class="name">Papago</span><div class="desc">韩语翻译APP，比Google翻译准太多</div></li>
+          <li><span class="name">KorailTalk</span><div class="desc">KTX 官方APP，可订票查时刻表</div></li>
+          <li><span class="name">T-money Card</span><div class="desc">地铁/公交/便利店通用，便利店可购买+充值，退卡余额₩20,000以内可退</div></li>
+          <li><span class="name">WOWPASS</span><div class="desc">外国人专用预付卡，APP内换汇+付款，汇率比现金换好</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">⚠️ 首尔避雷总结</div>
+        <ul class="food-list">
+          <li><span class="tag tag-warn">避雷</span><span class="name">明洞路边摊</span><div class="desc">价格是弘大/一般地区的1.5-2倍，看看就好</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">东大门零售</span><div class="desc">东大门是批发市场，很多商家不零售，且款式偏向批量采购，逛街体验远不如弘大/明洞</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">梨泰院</span><div class="desc">没什么好逛的韩妆/韩潮店，除非专程去酒吧/西餐</div></li>
+          <li><span class="tag tag-warn">避雷</span><span class="name">出租车不打表</span><div class="desc">首尔/釜山正规出租车都打表，遇到不愿意打表的直接换一辆</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">🍽 你清单上未纳入路线的餐厅（不顺路）</div>
+        <ul class="food-list">
+          <li><span class="name">성상脊排 (Seongsang)</span><div class="desc">永登浦附近，距首尔站/合井较远。如果Day4选择从永登浦站坐KTX，可顺路去吃</div></li>
+          <li><span class="name">본디 蚕室总店 (Bondi)</span><div class="desc">蚕室（잠실）区域不在本次路线内，2号线可直达但单独跑一趟不划算</div></li>
+          <li><span class="name">고봉당 (Gobongdang)</span><div class="desc">江南站附近，距我们的住宿区域较远，逛街路线不顺</div></li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">💡 釜山特别提示</div>
+        <ul class="food-list">
+          <li><span class="tag tag-bts">ARMY</span><span class="name">智旻爸爸咖啡店 MAGNATE</span><div class="desc">越临近演唱会人越多！建议到达釜山后第一时间就去（已安排在Day4傍晚）。IG可关注 @magnate_busan 看营业时间</div></li>
+          <li><span class="name">广安里海滩 vs 海云台</span><div class="desc">广安里更local、人少、看广安大桥夜景绝美；海云台更touristy、沙子更细、周边更商业。你住广安里，已经占了好位置！</div></li>
+          <li><span class="name">釜山地铁</span><div class="desc">釜山地铁比首尔简单得多，主要用1号线（南北）和2号线（东西），记住这个就够了</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; color:var(--muted); font-size:12px; padding:20px 0 40px;">
+    Made with 💜 for ARMY &nbsp;|&nbsp; 行程可根据实际情况随时调整 &nbsp;|&nbsp; Updated 2026.5.26
+  </p>
+
+</div>
+
+<script>
+(function() {
+  var dayCards = document.querySelectorAll('.day-card');
+  var calDays = document.querySelectorAll('.cal-day');
+  var sectionNav = document.getElementById('sectionNav');
+  var snLabel = document.getElementById('snDayLabel');
+  var sectionNavWrapper = document.getElementById('sectionNavWrapper');
+
+  // Build section map: assign IDs to each .sec div within each day card
+  var sectionMap = {};
+  dayCards.forEach(function(card) {
+    var dayId = card.id;
+    var secs = card.querySelectorAll('.day-card-body > .sec');
+    var items = [];
+    secs.forEach(function(sec, i) {
+      var sid = dayId + '-s' + i;
+      sec.id = sid;
+      var titleEl = sec.querySelector('.sec-title');
+      var raw = titleEl ? titleEl.textContent : '';
+      // Extract clean short title (remove emojis, keep first few chars)
+      var clean = raw.replace(/[^一-鿿\w\s]/g, '').trim();
+      if (clean.length > 6) clean = clean.substring(0, 6);
+      if (!clean) clean = '更多';
+      // Merge similar sections for display
+      var display = clean;
+      if (display.includes('时间线') || display.includes('路線')) display = '🕐 时间线';
+      else if (display.includes('交通') || display.includes('寄存') || display.includes('机场')) display = '🚇 交通';
+      else if (display.includes('必逛') || display.includes('朋友') || display.includes('自由行')) display = '🛍 必逛';
+      else if (display.includes('必吃')) display = '🍽 必吃';
+      else if (display.includes('小贴士') || display.includes('注意')) display = '💡 小贴士';
+      else if (display.includes('SPA') || display.includes('过夜')) display = '🛌 过夜';
+      else if (display.includes('实用APP') || display.includes('住宿') || display.includes('避雷') || display.includes('特别提示') || display.includes('未纳入')) display = '📌 ' + clean;
+      items.push({ id: sid, title: display });
+    });
+    sectionMap[dayId] = items;
+  });
+
+  // Update section nav based on scroll position
+  var lastDay = null;
+  function updateSectionNav() {
+    var scrollPos = window.scrollY + 150;
+    var activeId = null;
+    dayCards.forEach(function(card) {
+      if (card.offsetTop <= scrollPos) activeId = card.id;
+    });
+    if (!activeId) { activeId = dayCards[0].id; }
+    if (activeId === lastDay) return;
+    lastDay = activeId;
+
+    // Update calendar highlight
+    calDays.forEach(function(d) { d.classList.remove('active-day'); });
+    var activeCal = document.querySelector('.cal-day[href="#' + activeId + '"]');
+    if (activeCal) activeCal.classList.add('active-day');
+
+    // Update section nav links
+    var items = sectionMap[activeId];
+    if (!items) return;
+    var dayNum = activeId.replace('day', '');
+    if (activeId === 'appendix') { snLabel.textContent = '📌 附录'; }
+    else { snLabel.textContent = 'Day ' + dayNum; }
+    // Remove old links, keep label
+    var links = sectionNav.querySelectorAll('a');
+    links.forEach(function(l) { l.remove(); });
+    // Build deduplicated links
+    var seen = {};
+    items.forEach(function(item) {
+      if (seen[item.title]) return;
+      seen[item.title] = true;
+      var a = document.createElement('a');
+      a.href = '#' + item.id;
+      a.textContent = item.title;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById(item.id);
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 130;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+      sectionNav.appendChild(a);
+    });
+    // Show wrapper
+    sectionNavWrapper.style.opacity = '1';
+  }
+
+  // Throttled scroll handler
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(function() { updateSectionNav(); ticking = false; }); ticking = true; }
+  });
+
+  // Initial run
+  updateSectionNav();
+
+  // Open all cards by default on desktop, collapse extras on mobile
+  dayCards.forEach(function(card, i) {
+    if (i >= 3 && window.innerWidth < 600) card.classList.remove('open');
+  });
+})();
+</script>
+</body>
+</html>
